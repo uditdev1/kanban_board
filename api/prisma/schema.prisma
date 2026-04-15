@@ -1,0 +1,25 @@
+// https://www.prisma.io/docs/orm/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @default("")
+  column      String   @default("todo") // "todo" | "inprogress" | "done"
+  position    String   @default("a0")   // Fractional index for O(1) ordering
+  version     Int      @default(1)      // Optimistic concurrency control
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([column])
+  @@index([column, position])
+}
