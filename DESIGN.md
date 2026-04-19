@@ -2,13 +2,13 @@
 
 ## 1. Overview
 
-A real-time collaborative Kanban board where multiple users can simultaneously create, edit, move, and reorder tasks across three columns (To Do, In Progress, Done). The board uses WebSockets (Socket.IO) for real-time sync and implements version-based Optimistic Concurrency Control (OCC) for conflict resolution.
+A real-time collaborative Kanban board where multiple users can simultaneously create, edit, move, and reorder tasks across three columns (To Do, In Progress, Done). The board uses WebSockets (Socket.IO) for real-time sync and implements version-based Optimistic Concurrency Control (OCC) for conflict resolutions.
 
 ## 2. Conflict Resolution Strategy
 
 ### Approach: Version-Based Optimistic Concurrency Control (OCC)
 
-Every task has a `version` field (integer, starts at 1). Every client mutation includes the `version` the client last observed. The server checks this version atomically inside a Prisma transaction before applying changes.
+Every task has a `version` field (integer, starts at 1). Every client mutation includes the `version` the client last observed. The server checks this version atomically inside a Prisma transaction before applying change.
 
 ### How It Works
 
