@@ -183,3 +183,40 @@ bun test
 Tests cover:
 - **Integration**: Concurrent move+edit, move+move, concurrent reorder scenarios
 - **Unit**: Fractional indexing position generation and ordering consistency
+
+
+
+## Local Development Setup
+
+### Prerequisites
+- Node.js 18+
+- Bun runtime
+- PostgreSQL 18
+- Git
+
+### Step by Step Setup
+
+1. Clone the repository
+```bash
+   git clone https://github.com/uditdev1/kanban_board.git
+   cd kanban_board
+```
+
+2. Setup API
+```bash
+   cd api
+   cp .env.example .env
+   bun install
+   bunx prisma migrate deploy
+   bun run dev
+```
+
+3. Setup Client
+```bash
+   cd client
+   cp .env.example .env
+   npm install
+   npm run dev
+```
+
+4. Open http://localhost:5173
